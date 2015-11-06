@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/com.google.appraise.eclipse.feature_1.0.0.qualifier.jar" id="com.google.appraise.eclipse.feature" version="1.0.0.qualifier">
+      <category name="reviews_category"/>
+   </feature>
+   <category-def name="reviews_category" label="Reviews">
+      <description>
+         Google Appraise git-notes-based code reviews.
+      </description>
+   </category-def>
+</site>

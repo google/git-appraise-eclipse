@@ -1,0 +1,6 @@
+target/repository/*
+target/site/*
+target/*.properties
+target/*.xml
+*.jar
+*.zip

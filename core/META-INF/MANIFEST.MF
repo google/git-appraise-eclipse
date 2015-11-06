@@ -1,0 +1,22 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Appraise Connector Core
+Bundle-SymbolicName: com.google.appraise.eclipse.core;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.google.appraise.eclipse.core.AppraiseConnectorPlugin
+Bundle-Vendor: Google
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.team.core;bundle-version="3.7.0",
+ org.eclipse.egit.core;bundle-version="3.7.1",
+ org.eclipse.core.resources;bundle-version="3.9.1",
+ org.eclipse.jgit;bundle-version="3.7.1",
+ org.eclipse.mylyn.tasks.core;bundle-version="3.9.0",
+ org.apache.commons.codec,
+ org.eclipse.swt,
+ org.eclipse.jface;bundle-version="3.11.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Export-Package: com.google.appraise.eclipse.core,
+ com.google.appraise.eclipse.core.client.data,
+ com.google.appraise.eclipse.core.client.git
+Import-Package: com.google.gson

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.mylyn.tasks.ui.repositories">
+      <connectorCore
+            class="com.google.appraise.eclipse.core.AppraiseRepositoryConnector"
+            name="Appraise Connector Core">
+      </connectorCore>
+      <connectorUi
+            brandingIcon="icons/appraise-icon.gif"
+            class="com.google.appraise.eclipse.ui.AppraiseConnectorUi"
+            name="Appraise Connector Ui"
+            overlayIcon="icons/overlay-appraise.gif">
+      </connectorUi>
+   </extension>
+   <extension
+         point="org.eclipse.mylyn.tasks.ui.editors">
+      <pageFactory
+            class="com.google.appraise.eclipse.ui.editor.AppraiseReviewTaskEditorPageFactory"
+            id="com.google.appraise.eclipse.ui.pageFactory1">
+      </pageFactory>
+   </extension>
+   <extension
+         point="org.eclipse.mylyn.tasks.core.taskActivationListeners">
+      <listener
+            class="com.google.appraise.eclipse.ui.editor.AppraiseReviewTaskActivationListener"
+            id="com.google.appraise.eclipse.ui.listener1">
+      </listener>
+   </extension>
+   
+   <extension 
+         point="org.eclipse.ui.views"> 
+      <view 
+            class="com.google.appraise.eclipse.ui.AppraiseReviewMarkerView" 
+            icon="icons/appraise-icon.gif" 
+            id="com.google.appraise.eclipse.ui.reviewMarker" 
+            name="Appraise Review Tasks"> 
+      </view> 
+   </extension>
+   
+  <extension 
+        point="org.eclipse.ui.ide.markerSupport"> 
+
+     <markerField
+      class="com.google.appraise.eclipse.ui.Author"
+      id="com.google.appraise.eclipse.ui.author"
+      name="Author">
+    </markerField>
+
+     <markerField
+      class="com.google.appraise.eclipse.ui.DateTime"
+      id="com.google.appraise.eclipse.ui.datetime"
+      name="DateTime">
+    </markerField>
+
+     <markerField
+      class="com.google.appraise.eclipse.ui.Resolved"
+      id="com.google.appraise.eclipse.ui.resolved"
+      name="Resolved">
+    </markerField>
+
+     <markerContentGenerator 
+           id="com.google.appraise.eclipse.ui.reviewMarkerGenerator"
+           name="Appraise Review Marker Generator"> 
+     <markerTypeReference 
+           id="com.google.appraise.eclipse.ui.reviewmarker"/> 
+     <markerFieldReference 
+           id="org.eclipse.ui.ide.severityAndDescriptionField"/> 
+     <markerFieldReference 
+           id="com.google.appraise.eclipse.ui.author"/> 
+     <markerFieldReference 
+           id="com.google.appraise.eclipse.ui.datetime"/> 
+     <markerFieldReference 
+           id="org.eclipse.ui.ide.locationField"/> 
+     <markerFieldReference 
+           id="com.google.appraise.eclipse.ui.resolved"/> 
+     <markerFieldReference 
+           id="org.eclipse.ui.ide.priorityField"/> 
+     <markerFieldReference 
+           id="org.eclipse.ui.ide.pathField"/> 
+     <markerFieldReference 
+           id="org.eclipse.ui.ide.resourceField"/> 
+     </markerContentGenerator> 
+  </extension>
+
+   <extension
+       id="reviewmarker"
+       point="org.eclipse.core.resources.markers" />
+   <extension
+       id="reviewtask"
+       point="org.eclipse.core.resources.markers">
+       <super type="org.eclipse.core.resources.taskmarker"/>
+       <super type="com.google.appraise.eclipse.ui.reviewmarker"/>
+       <attribute name="Author" />
+       <attribute name="DateTime" />
+       <attribute name="Resolved" />
+       <attribute name="TaskId" />
+       <attribute name="Id" />
+   </extension>
+   
+   <extension point="org.eclipse.ui.menus">
+    <menuContribution
+        class="com.google.appraise.eclipse.ui.contextmenus.ReviewMarkerContributionFactory"
+        locationURI="popup:#AbstractTextEditorRulerContext?after=additions">
+      <dynamic
+             class="com.google.appraise.eclipse.ui.contextmenus.ReviewMarkerMenuContribution"
+             id="com.google.appraise.eclipse.ui.contextmenus.ReviewMarkerMenuContribution">
+      </dynamic>
+    </menuContribution>
+    <menuContribution
+        class="com.google.appraise.eclipse.ui.contextmenus.TextEditorContextContributionFactory"
+        locationURI="popup:#AbstractTextEditorContext?after=additions">
+      <dynamic
+             class="com.google.appraise.eclipse.ui.contextmenus.TextEditorContextMenuContribution"
+             id="com.google.appraise.eclipse.ui.contextmenus.TextEditorContextContribution">
+      </dynamic>
+    </menuContribution>
+   </extension>
+
+</plugin>
