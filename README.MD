@@ -2,42 +2,31 @@
 
 Git Appraise is a code review system that uses git-notes as a data store. The Google Appraise Eclipse Plugin supports an Appraise-based code reveiw workflow inside Eclipse. It is implemented as a Mylyn Task Repository connector and leverages the Egit plugin.
 
+## Screenshots
+
+Displaying a single review, with details and highlighted diffs for the changed files:
+![Displaying a single review](./doc/screenshots/Review-Display.png?raw=true)
+
+Adding an inline comment to the current review:
+![Adding an inline comment](/doc/screenshots/New-Line-Comment-Menu.png?raw=true)
+
+Displaying the comments in a review:
+![Displaying the comments in a review](/doc/screenshots/Review-Display-With-Comments.png?raw=true)
+
 ## Links
 
 * [Git Appraise](https://github.com/google/git-appraise) -- for the Git Appraise command-line tool and more information about Git Appraise in general.
-
-## How to develop
-
-Import the following projects into Eclipse:
-* com.google.appraise.eclipse.core
-* com.google.appraise.eclipse.ui
-* feature
-* site
-
-To debug, right-click the "core" project and Run As...Eclipse Application.
-
-To build the update site archive (site/target/site_assembly.zip):
-mvn package
-
-Please send pull requests.
-
-## Releases
-Releases will be tagged in the repository and an announcement will be made on our Github page. We have no strict timetable but aim to do this every three months or whenever a more urgent need arises.
-
-## Roadmap
-* Improved UI for creating and responding to comments (e.g. inline with the source).
-* Smoother Mylyn integration.
 
 ## User documentation
 
 ### Prerequisites
 
 * Install [Egit](http://www.eclipse.org/egit/download/).
-* Install the Appraise Eclipse Plugin. For now, this means using the update site archive file. (See the "How to develop" section above). Details:
+* Install the Appraise Eclipse Plugin. For now, this means using the update site archive file from one of [the releases](https://github.com/google/git-appraise-eclipse/releases).
   * Help | Install New Software...
   * Add...
   * Archive...
-  * Browse to the site.zip file you downloaded or built using the instructions above.
+  * Browse to the site.zip file you downloaded.
   * OK.
   * Turn off "Group items by category" if it is selected.
   * Choose "Appraise" and Next, Finish.
@@ -58,7 +47,6 @@ Releases will be tagged in the repository and an announcement will be made on ou
 * Enter a title for your query. (This will show up in the Task List).
 * You may choose to filter for reviews where you are the requestor or reviewer, or filter by a specific review commit hash prefix.
 * You can refresh the query (to see new reviews from your collaborators, for example) with "Synchronize" or "Synchronize Automatically".
-
 
 ### Requesting a code review
 Note that the Appraise workflow model expects you to request a review from a working branch, and the Eclipse Plugin assumes that you currently have that branch checked out. (You can confirm this by looking at the project node name in the Package Explorer.)
@@ -88,3 +76,25 @@ The code review workflow for Appraise in Eclipse is based around Mylyn's task ac
   * Right-click anywhere in the source editor and select "Appraise Review Comments" to create a new comment associated with the file the file, the location clicked, or the overall review.
 * After making all comments, return to the task editor to:
   * Submit comments with the "Submit" button. (This has the effect of merging git-notes for the review commit on the refs/notes/devtools/discuss ref.)
+
+## Releases
+Releases will be tagged in the repository and an announcement will be made on our Github page. We have no strict timetable but aim to do this every three months or whenever a more urgent need arises.
+
+## Roadmap
+* Improved UI for creating and responding to comments (e.g. inline with the source).
+* Smoother Mylyn integration.
+
+## How to develop
+
+Import the following projects into Eclipse:
+* com.google.appraise.eclipse.core
+* com.google.appraise.eclipse.ui
+* feature
+* site
+
+To debug, right-click the "core" project and Run As...Eclipse Application.
+
+To build the update site archive (site/target/site_assembly.zip):
+mvn package
+
+Please send pull requests.
